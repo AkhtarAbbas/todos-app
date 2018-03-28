@@ -55,6 +55,9 @@ ul.addEventListener('click', (e)=>{
 						todos[todo].completed = false
 					}
 				}
+				rClass()
+				let activeEle = document.querySelector('.all')
+				activeEle.classList.add('selected')
 			}
 		}	
 	printTodo()
@@ -63,13 +66,15 @@ ul.addEventListener('click', (e)=>{
 
 // MARK ALL AS COMPLETED
 toggleAll.addEventListener('click', (e)=>{
-	for(todo in todos){
 		if (todos[todo].completed == false) {
-			todos[todo].completed = true
+			for(todo in todos){
+				todos[todo].completed = true
+			}				
 		} else {
-			todos[todo].completed = false
+			for(todo in todos){
+				todos[todo].completed = false
+			}
 		}
-	}	
 	printTodo()
 })
 
@@ -79,7 +84,7 @@ toggleAll.addEventListener('click', (e)=>{
 
 filters.addEventListener('click', (e)=>{
 	e.preventDefault()
-	rClass(e)
+	rClass()
 	e.target.classList.add('selected')
 	let filterClass = e.target.classList[0]
 	if (filterClass == 'all') {
